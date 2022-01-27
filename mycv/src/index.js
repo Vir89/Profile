@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react";
+//import App from "./App";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom;";
 import Contact from "./components/Contact";
 import Education from "./components/Education";
@@ -8,20 +9,25 @@ import Skills from "./components/Skills";
 import Portfolio from "./components/Portfolio";
 import Profile from "./components/Profile";
 import Home from "./components/Home";
+import Layout from "./Layout";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/education" element={<Education />} />
-      <Route path="/experience" element={<Experience />} />
-      <Route path="/portfolio" element={<Portfolio />} />
-      <Route path="/skills" element={<Skills />} />
-      <Route path="*" element={<Navigate replace to="/" />} />
-    </Routes>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="education" element={<Education />} />
+          <Route path="experience" element={<Experience />} />
+          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="skills" element={<Skills />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
